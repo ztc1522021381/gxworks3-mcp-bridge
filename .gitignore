@@ -1,0 +1,34 @@
+# ---- Build output ----
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+*.dll
+*.exe
+*.pdb
+
+# ---- .NET / Visual Studio ----
+.vs/
+*.user
+*.suo
+*.userprefs
+project.lock.json
+artifacts/
+
+# ---- Rider / JetBrains ----
+.idea/
+
+# ---- VS Code (keep shared settings out unless intended) ----
+.vscode/
+
+# ---- Claude Code local settings (machine-specific) ----
+.claude/settings.local.json
+
+# ---- OS junk ----
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# ---- Logs / temp ----
+*.log
+*.tmp
