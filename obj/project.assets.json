@@ -1781,19 +1781,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Rahul_PC\\.nuget\\packages\\": {}
+    "D:\\nuget-packages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\R & D\\STC Training\\MCP_Tools_of_Mitsubishi\\GXWorks3Bridge.csproj",
+      "projectUniqueName": "D:\\gx3-mcp\\gxworks3-mcp-bridge\\GXWorks3Bridge.csproj",
       "projectName": "GXWorks3Bridge",
-      "projectPath": "E:\\R & D\\STC Training\\MCP_Tools_of_Mitsubishi\\GXWorks3Bridge.csproj",
-      "packagesPath": "C:\\Users\\Rahul_PC\\.nuget\\packages\\",
-      "outputPath": "E:\\R & D\\STC Training\\MCP_Tools_of_Mitsubishi\\obj\\",
+      "projectPath": "D:\\gx3-mcp\\gxworks3-mcp-bridge\\GXWorks3Bridge.csproj",
+      "packagesPath": "D:\\nuget-packages",
+      "outputPath": "D:\\gx3-mcp\\gxworks3-mcp-bridge\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Rahul_PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\15220\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0-windows"
@@ -1818,7 +1818,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.300"
+      "SdkAnalysisLevel": "10.0.400"
     },
     "frameworks": {
       "net10.0-windows": {
@@ -1861,7 +1861,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "D:\\dotnet-sdk\\root\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

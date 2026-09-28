@@ -18,7 +18,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -49,6 +51,34 @@ namespace GXWorks3Bridge
         private Window _mainWindow;
 
         /// <summary>
+        /// PID of the attached GX Works3 process. Needed for keyboard-focus
+        /// validation: before sending Ctrl+A / Ctrl+C we must confirm the
+        /// foreground window really belongs to this process.
+        /// </summary>
+        private int _targetPid;
+
+        // --- Win32 helpers for focus and clipboard-sequence validation ---
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
+        /// <summary>
+        /// Monotonic counter incremented by Windows on every clipboard change.
+        /// Used to prove that OUR Ctrl+C actually wrote to the clipboard,
+        /// instead of reading whatever happened to be there already.
+        /// </summary>
+        [DllImport("user32.dll")]
+        private static extern uint GetClipboardSequenceNumber();
+
+        /// <summary>
+        /// Sentinel placed on the clipboard right before Ctrl+C. If the value
+        /// read back is still the sentinel, nothing was copied at all.
+        /// </summary>
+        private const string ClipboardSentinel = "\u0001__GXW3_PENDING__\u0001";
+
+        /// <summary>
         /// একই সময়ে দুটো MCP tool call যেন UI নাড়াচাড়া (keystroke/click) না মেশায়,
         /// সব পাবলিক অপারেশন এই lock-এর ভেতরে চলে।
         /// </summary>
@@ -77,6 +107,8 @@ namespace GXWorks3Bridge
             {
                 _app = FlaUICoreApp.Attach(processId);
                 _mainWindow = _app.GetMainWindow(_automation, TimeSpan.FromSeconds(5));
+                if (_mainWindow != null)
+                    _targetPid = processId;
                 return _mainWindow != null;
             }
             catch (Exception ex)
@@ -93,7 +125,15 @@ namespace GXWorks3Bridge
         /// </summary>
         public void EnsureAttached()
         {
-            if (_mainWindow != null) return;
+            if (_mainWindow != null && IsTargetAlive()) return;
+
+            if (_mainWindow != null)
+            {
+                Console.Error.WriteLine(
+                    "Cached GX Works3 handle is no longer usable — re-attaching.");
+                _mainWindow = null;
+                _app = null;
+            }
 
             var pid = FindProcessByName()
                 ?? throw new InvalidOperationException(
@@ -101,6 +141,30 @@ namespace GXWorks3Bridge
 
             if (!AttachToProcess(pid))
                 throw new InvalidOperationException("GX Works3-এ attach ব্যর্থ হয়েছে।");
+        }
+
+        /// <summary>
+        /// Checks that the cached handle still belongs to a live process.
+        /// If GX Works3 is closed and reopened, the stale UIA handle keeps
+        /// looking valid while every operation silently targets the wrong
+        /// window — so this must be verified on every call, not just once.
+        /// </summary>
+        private bool IsTargetAlive()
+        {
+            if (_targetPid == 0) return false;
+            try
+            {
+                using var p = Process.GetProcessById(_targetPid);
+                return !p.HasExited;
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -184,40 +248,139 @@ namespace GXWorks3Bridge
             Mouse.Click(clickPoint);
             Thread.Sleep(200);
 
+            // Guard BEFORE the destructive part. This sequence presses Delete, so if the
+            // keyboard focus is not inside the editor it erases text in whatever other
+            // application happens to own it. Refuse rather than risk that.
+            RequireForegroundIsTarget("write ST code");
+
             // পুরনো কোড সিলেক্ট ও ডিলিট
-            Keyboard.Press(VirtualKeyShort.CONTROL);
-            Keyboard.Type(VirtualKeyShort.KEY_A);
-            Keyboard.Release(VirtualKeyShort.CONTROL);
+            SendCtrl(VirtualKeyShort.KEY_A);
             Thread.Sleep(100);
             Keyboard.Press(VirtualKeyShort.DELETE);
             Keyboard.Release(VirtualKeyShort.DELETE);
             Thread.Sleep(100);
 
+            // Re-check immediately before pasting — focus can be stolen during the sleeps.
+            RequireForegroundIsTarget("write ST code");
+
             // ক্লিপবোর্ডে কোড বসিয়ে পেস্ট
             SetClipboardTextSafely(stCode);
-            Keyboard.Press(VirtualKeyShort.CONTROL);
-            Keyboard.Type(VirtualKeyShort.KEY_V);
-            Keyboard.Release(VirtualKeyShort.CONTROL);
+            SendCtrl(VirtualKeyShort.KEY_V);
             Thread.Sleep(300);
         }
 
         /// <summary>
-        /// বর্তমান POU-এর সম্পূর্ণ ST কোড ক্লিপবোর্ডের মাধ্যমে পড়ে।
+        /// Reads the full ST code of the current POU.
+        ///
+        /// The ST editor exposes no UIA TextPattern, so the clipboard is the only
+        /// channel available. That channel is *global*: Ctrl+A / Ctrl+C are delivered
+        /// to whichever control currently owns the keyboard focus, and the clipboard is
+        /// shared with every other process on the machine. Without guards, "read the ST
+        /// code" can silently return the text of an entirely unrelated window (a chat
+        /// input box, a browser, another agent's editor) — and nothing in the response
+        /// reveals that anything went wrong.
+        ///
+        /// Every step below exists to turn that silent corruption into a loud failure:
+        ///   1. focus the POU window AND click into the editor — Window.Focus() only
+        ///      raises the window, it does not move the keyboard focus into the
+        ///      editing surface;
+        ///   2. verify the foreground window really belongs to the GX Works3 process;
+        ///   3. place a sentinel on the clipboard and record its sequence number, so we
+        ///      can prove that OUR Ctrl+C is what wrote it;
+        ///   4. verify the sequence number changed and the sentinel is gone;
+        ///   5. sanity-check the payload;
+        ///   6. restore the caller's previous clipboard text.
+        ///
+        /// Note: if the previous clipboard held a non-text payload (e.g. a screenshot),
+        /// it cannot be restored through this API and will have been replaced.
         /// </summary>
         public string ReadSTCode(string pouNameHint)
         {
             var pouWindow = FindAndFocusPouWindow(pouNameHint);
 
-            Keyboard.Press(VirtualKeyShort.CONTROL);
-            Keyboard.Type(VirtualKeyShort.KEY_A);
-            Keyboard.Release(VirtualKeyShort.CONTROL);
-            Thread.Sleep(100);
-            Keyboard.Press(VirtualKeyShort.CONTROL);
-            Keyboard.Type(VirtualKeyShort.KEY_C);
-            Keyboard.Release(VirtualKeyShort.CONTROL);
+            // Step 1 — this is the step the read path used to be missing. WriteSTCode
+            // has always clicked into the editor for the same reason; without the click
+            // the keystrokes land on whatever pane last held the keyboard focus.
+            var bounds = pouWindow.BoundingRectangle;
+            Mouse.Click(new System.Drawing.Point(
+                bounds.X + bounds.Width / 2,
+                bounds.Y + bounds.Height / 2));
             Thread.Sleep(200);
 
-            return GetClipboardTextSafely();
+            // Step 2
+            RequireForegroundIsTarget("read ST code");
+
+            string previousClipboard = GetClipboardTextSafely();
+            try
+            {
+                // Step 3
+                SetClipboardTextSafely(ClipboardSentinel);
+                uint seqBefore = GetClipboardSequenceNumber();
+
+                SendCtrl(VirtualKeyShort.KEY_A);
+                Thread.Sleep(100);
+                SendCtrl(VirtualKeyShort.KEY_C);
+                Thread.Sleep(200);
+
+                // Step 4
+                uint seqAfter = GetClipboardSequenceNumber();
+                if (seqAfter == seqBefore)
+                    throw new InvalidOperationException(
+                        "Ctrl+C did not change the clipboard, so the copy never reached the " +
+                        "ST editor. Nothing was read — this message is a guard, not code.");
+
+                string text = GetClipboardTextSafely();
+                if (text == ClipboardSentinel)
+                    throw new InvalidOperationException(
+                        "The clipboard still holds the sentinel value, meaning Ctrl+C selected " +
+                        "nothing. Nothing was read — this message is a guard, not code.");
+
+                // Focus could have moved away mid-operation; re-check before trusting it.
+                RequireForegroundIsTarget("read ST code");
+
+                // Step 5
+                if (string.IsNullOrWhiteSpace(text))
+                    throw new InvalidOperationException(
+                        "Clipboard came back empty after Ctrl+C — refusing to report it as code.");
+
+                return text;
+            }
+            finally
+            {
+                // Step 6 — do not leave the tool's working data sitting on the clipboard.
+                if (!string.IsNullOrEmpty(previousClipboard))
+                    SetClipboardTextSafely(previousClipboard);
+            }
+        }
+
+        private static void SendCtrl(VirtualKeyShort key)
+        {
+            Keyboard.Press(VirtualKeyShort.CONTROL);
+            Keyboard.Type(key);
+            Keyboard.Release(VirtualKeyShort.CONTROL);
+        }
+
+        /// <summary>
+        /// Aborts unless the foreground window belongs to the attached GX Works3
+        /// process. Sending keystrokes blind is precisely what produced silent
+        /// wrong-content reads; failing loudly is the entire point of this guard.
+        /// </summary>
+        private void RequireForegroundIsTarget(string action)
+        {
+            if (_targetPid == 0)
+                throw new InvalidOperationException(
+                    "Refusing to " + action + ": no GX Works3 process is attached.");
+
+            IntPtr fg = GetForegroundWindow();
+            GetWindowThreadProcessId(fg, out uint fgPid);
+
+            if ((int)fgPid != _targetPid)
+                throw new InvalidOperationException(
+                    "Refusing to " + action + ": the foreground window belongs to PID " + fgPid +
+                    ", but GX Works3 is PID " + _targetPid + ". Keyboard focus is elsewhere, so " +
+                    "Ctrl+A / Ctrl+C would copy that other window's text into the clipboard and " +
+                    "it would be reported as ST code. Bring GX Works3 to the front (and avoid " +
+                    "typing into other windows while it runs), then retry.");
         }
 
         /// <summary>
@@ -228,6 +391,10 @@ namespace GXWorks3Bridge
         {
             _mainWindow.Focus();
             Thread.Sleep(200);
+
+            // Shift+Alt+F4 is another global shortcut — if focus drifted, it fires in
+            // whatever window is in front instead of GX Works3.
+            RequireForegroundIsTarget("trigger Rebuild All");
 
             Keyboard.Press(VirtualKeyShort.SHIFT);
             Keyboard.Press(VirtualKeyShort.ALT);

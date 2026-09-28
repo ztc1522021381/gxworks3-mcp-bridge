@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GXWorks3Bridge")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d10998d40dddfff86059067e42128dd65487efd1")]
 [assembly: System.Reflection.AssemblyProductAttribute("GXWorks3Bridge")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GXWorks3Bridge")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

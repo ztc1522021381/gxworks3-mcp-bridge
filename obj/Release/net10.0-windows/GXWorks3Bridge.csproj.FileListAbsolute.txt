@@ -1,52 +1,52 @@
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\GXWorks3Bridge.exe
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\GXWorks3Bridge.deps.json
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\GXWorks3Bridge.runtimeconfig.json
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\GXWorks3Bridge.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\GXWorks3Bridge.pdb
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\FlaUI.Core.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\FlaUI.UIA3.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Interop.UIAutomationClient.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.AI.Abstractions.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.Binder.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.CommandLine.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.Json.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.UserSecrets.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.DependencyInjection.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Diagnostics.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Diagnostics.Abstractions.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Hosting.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.Configuration.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.Console.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.Debug.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.EventLog.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.EventSource.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Options.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\Microsoft.Extensions.Primitives.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\ModelContextProtocol.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\ModelContextProtocol.Core.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\System.Management.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\bin\Release\net10.0-windows\runtimes\win\lib\net8.0\System.Management.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\GXWorks3Bridge.csproj.AssemblyReference.cache
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\GXWorks3Bridge.GeneratedMSBuildEditorConfig.editorconfig
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\GXWorks3Bridge.AssemblyInfoInputs.cache
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\GXWorks3Bridge.AssemblyInfo.cs
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\GXWorks3Bridge.csproj.CoreCompileInputs.cache
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\GXWorks3.DF8F6458.Up2Date
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\GXWorks3Bridge.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\refint\GXWorks3Bridge.dll
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\GXWorks3Bridge.pdb
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\GXWorks3Bridge.genruntimeconfig.cache
-E:\R & D\STC Training\MCP_Tools_of_Mitsubishi\obj\Release\net10.0-windows\ref\GXWorks3Bridge.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\FlaUI.Core.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\FlaUI.UIA3.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Interop.UIAutomationClient.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.AI.Abstractions.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.Binder.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.CommandLine.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.Json.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Configuration.UserSecrets.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Diagnostics.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Hosting.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.Configuration.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.Console.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.Debug.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.EventLog.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Logging.EventSource.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Options.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\Microsoft.Extensions.Primitives.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\ModelContextProtocol.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\ModelContextProtocol.Core.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\System.Management.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\bin\Release\net10.0-windows\runtimes\win\lib\net8.0\System.Management.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\GXWorks3Bridge.csproj.AssemblyReference.cache
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\GXWorks3Bridge.GeneratedMSBuildEditorConfig.editorconfig
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\GXWorks3Bridge.AssemblyInfoInputs.cache
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\GXWorks3Bridge.AssemblyInfo.cs
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\GXWorks3Bridge.csproj.CoreCompileInputs.cache
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\GXWorks3Bridge.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\refint\GXWorks3Bridge.dll
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\GXWorks3Bridge.pdb
+D:\gx3-mcp\build-verify\bin\Release\net10.0-windows\GXWorks3Bridge.exe
+D:\gx3-mcp\build-verify\bin\Release\net10.0-windows\GXWorks3Bridge.deps.json
+D:\gx3-mcp\build-verify\bin\Release\net10.0-windows\GXWorks3Bridge.runtimeconfig.json
+D:\gx3-mcp\build-verify\bin\Release\net10.0-windows\GXWorks3Bridge.dll
+D:\gx3-mcp\build-verify\bin\Release\net10.0-windows\GXWorks3Bridge.pdb
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\GXWorks3.DF8F6458.Up2Date
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\GXWorks3Bridge.genruntimeconfig.cache
+D:\gx3-mcp\gxworks3-mcp-bridge\obj\Release\net10.0-windows\ref\GXWorks3Bridge.dll
